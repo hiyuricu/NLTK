@@ -1,0 +1,323 @@
+1章
+1.
+>>> 12 / (4+1)
+2
+>>> 12.0 / (4+1)
+2.4
+
+2.
+>>> 26 ** 100
+3142930641582938830174357788501626427282669988762475256374173175398995908420104023465432599069702289330964075081611719197835869803511992549376L
+
+3.
+>>> ['Monty', 'Python'] * 3
+['Monty', 'Python', 'Monty', 'Python', 'Monty', 'Python']
+>>> 3 * ['Monty', 'Python']
+['Monty', 'Python', 'Monty', 'Python', 'Monty', 'Python']
+
+4.
+>>> len(text2)
+141576
+
+5.
+延べ語数に対して異なり語数が多い方が語彙の多様性があるのでhumorの方
+
+6.
+>>> text2.dispersion_plot(["Elinor", "Marianne", "Edward","Willoughby"])
+女性が中心の話
+どれがカップルかはわからないと思う
+
+7.
+>>> text5.collocations()
+Building collocations list
+wanna chat; PART JOIN; MODE #14-19teens; JOIN PART; cute.-ass MP3; MP3
+player; times .. .; ACTION watches; guys wanna; song lasts; last
+night; ACTION sits; -...)...- S.M.R.; Lime Player; Player 12%; dont
+know; lez gurls; long time; gently kisses; Last seen
+
+8.
+set(hoge)でhogeに含まれる文字列の種類を取得し、len(hoge)でhogeに含まれる文字列の数を数えている
+
+9.
+(a)>>> my_string = "My string"
+>>> my_string
+'My string'
+>>> print my_string
+My string
+
+(b)>>> my_string + my_string
+'My stringMy string'
+>>> my_string * 3
+'My stringMy stringMy string'
+>>> my_string + " "  + my_string
+'My string My string'
+>>> (my_string + " ") * 3
+'My string My string My string '
+
+10.
+>>> my_sent = ["A", "rolling", "stone", "gathers", "no moss"]
+(a)>>> My_sent = " ".join(my_sent)
+>>> My_sent 
+'A rolling stone gathers no moss'
+
+(b)>>> My_sent.split()
+['A', 'rolling', 'stone', 'gathers', 'no', 'moss']
+
+11.
+>>> phrase1 = ['hoge']
+>>> phrase2 = ['foo']
+>>> phrase1 += ['a','b']
+>>> phrase1
+['hoge', 'a', 'b']
+>>> phrase2 += ['c']
+>>> phrase2 
+['foo', 'c']
+>>> len(phrase1 + phrase2)
+5
+>>> len(phrase1) + len(phrase2)
+5
+連結した後の長さと、それぞれの長さの加算(長さの値は同じ)
+
+12.
+>>> "Monty Python"[6:12]
+'Python' (文字列"Monty Python"のMを要素0番目として、要素6番目から11番目を出力している)
+>>> ["Monty", "Python"][1]
+'Python' (リスト["Monty", "Python"]の1番目の要素を出力している)
+題意がよくわからないが、bの方がよくある作法だと思う
+
+13.
+>>> sent1[2][2]
+'h'
+>>> sent1[2]
+'Ishmael'
+>>> sent1[2][0:5]
+'Ishma'
+リストsent1の2番目の要素の2番目の要素を示している
+
+14.
+>>> sent3
+['In', 'the', 'beginning', 'God', 'created', 'the', 'heaven', 'and', 'the', 'earth', '.']
+>>> text3[0:11]
+['In', 'the', 'beginning', 'God', 'created', 'the', 'heaven', 'and', 'the', 'earth', '.']
+>>> sent3[1]
+'the'
+>>> sent3[5]
+'the'
+>>> sent3[8]
+'the'
+
+15.
+>>> sorted([w for w in set(text5) if w.startswith('b')])
+['b', 'b-day', 'b/c', 'b4', 'babay', 'babble', 'babblein', 'babe', 'babes', 'babi', 'babies', 'babiess', 'baby', 'babycakeses', 'bachelorette', 'back', 'backatchya', 'backfrontsidewaysandallaroundtheworld', 'backroom', 'backup', 'bacl', 'bad', 'bag', 'bagel', 'bagels', 'bahahahaa', 'bak', 'baked', 'balad', 'balance', 'balck', 'ball', 'ballin', 'balls', 'ban', 'band', 'bandito', 'bandsaw', 'banjoes', 'banned', 'baord', 'bar', 'barbie', 'bare', 'barely', 'bares', 'barfights', 'barks', 'barn', 'barrel', 'base', 'bases', 'basically', 'basket', 'battery', 'bay', 'bbbbbyyyyyyyeeeeeeeee', 'bbiam', 'bbl', 'bbs', 'bc', 'be', 'beach', 'beachhhh', 'beam', 'beams', 'beanbag', 'beans', 'bear', 'bears', 'beat', 'beaten', 'beatles', 'beats', 'beattles', 'beautiful', 'because', 'beckley', 'become', 'bed', 'bedford', 'bedroom', 'beeeeehave', 'beeehave', 'been', 'beer', 'before', 'beg', 'begin', 'behave', 'behind', 'bein', 'being', 'beleive', 'believe', 'belive', 'bell', 'belly', 'belong', 'belongings', 'ben', 'bend', 'benz', 'bes', 'beside', 'besides', 'best', 'bet', 'betrayal', 'betta', 'better', 'between', 'beuty', 'bf', 'bi', 'biatch', 'bible', 'biebsa', 'bied', 'big', 'bigest', 'biggest', 'biiiatch', 'bike', 'bikes', 'bikini', 'bio', 'bird', 'birfday', 'birthday', 'bisexual', 'bishes', 'bit', 'bitch', 'bitches', 'bitdh', 'bite', 'bites', 'biyatch', 'biz', 'bj', 'black', 'blade', 'blah', 'blank', 'blankie', 'blazed', 'bleach', 'blech', 'bless', 'blessings', 'blew', 'blind', 'blinks', 'bliss', 'blocking', 'bloe', 'blood', 'blooded', 'bloody', 'blow', 'blowing', 'blowjob', 'blowup', 'blue', 'blueberry', 'bluer', 'blues', 'blunt', 'board', 'bob', 'bodies', 'body', 'boed', 'boght', 'boi', 'boing', 'boinked', 'bois', 'bomb', 'bone', 'boned', 'bones', 'bong', 'boning', 'bonus', 'boo', 'booboo', 'boobs', 'book', 'boom', 'boooooooooooglyyyyyy', 'boost', 'boot', 'bootay', 'booted', 'boots', 'booty', 'border', 'borderline', 'bored', 'boredom', 'boring', 'born', 'born-again', 'bosom', 'boss', 'bossy', 'bot', 'both', 'bother', 'bothering', 'bottle', 'bought', 'bounced', 'bouncer', 'bouncers', 'bound', 'bout', 'bouts', 'bow', 'bowl', 'box', 'boy', 'boyfriend', 'boys', 'bra', 'brad', 'brady', 'brain', 'brakes', 'brass', 'brat', 'brb', 'brbbb', 'bread', 'break', 'breaks', 'breath', 'breathe', 'bred', 'breeding', 'bright', 'brightened', 'bring', 'brings', 'bro', 'broke', 'brooklyn', 'brother', 'brothers', 'brought', 'brown', 'brrrrrrr', 'bruises', 'brunswick', 'brwn', 'btw', 'bucks', 'buddyyyyyy', 'buff', 'buffalo', 'bug', 'bugs', 'buh', 'build', 'builds', 'built', 'bull', 'bulls', 'bum', 'bumber', 'bummer', 'bumped', 'bumper', 'bunch', 'bunny', 'burger', 'burito', 'burned', 'burns', 'burp', 'burpin', 'burps', 'burried', 'burryed', 'bus', 'buses', 'bust', 'busted', 'busy', 'but', 'butt', 'butter', 'butterscotch', 'button', 'buttons', 'buy', 'buying', 'bwahahahahahahahahahaha', 'by', 'byb', 'bye', 'byeee', 'byeeee', 'byeeeeeeee', 'byeeeeeeeeeeeee', 'byes']
+
+16.
+>>> range(10)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> range(10,20)
+[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+>>> range(10,20,2)
+[10, 12, 14, 16, 18]
+>>> range(20,10,-2)
+[20, 18, 16, 14, 12]
+
+17.
+Dropboxの方に書いてる
+
+18.
+>>> len(set(sent1 + sent2 + sent3 + sent4 + sent5 + sent6 + sent7 + sent8))
+75
+
+19.
+>>> len(set([w.lower() for w in text1]))
+17231
+text1に含まれる大文字を小文字にしてから語彙を抽出する
+
+>>> len([w.lower() for w in set(text1)])
+19317
+text1に含まれる語彙を抽出してからそれらに含まれる大文字を小文字にする
+
+w.lower()は大文字を小文字にする操作なので、len([w.lower() for w in set(text1)])の方は重複を含むためlen([w.lower() for w in set(text1)])の方が大きな値をとる。また他のテキストでも同様の現象が起きる。
+
+20.
+w.isupper()は小文字が入っていないものを抽出し、not w.islower()は大文字が一文字でも入っているものを抽出する。(not w.islower()は小文字が入っていてもよい)
+
+21.
+>>> text2[-2:]
+['THE', 'END']
+>>> text2[-2:len(text2)]
+['THE', 'END']
+
+22.
+>>> FreqDist([w for w in text5 if len(w) == 4]).keys()[:50]
+['JOIN', 'PART', 'that', 'what', 'here', '....', 'have', 'like', 'with', 'chat', 'your', 'good', 'just', 'lmao', 'know', 'room', 'from', 'this', 'well', 'back', 'hiya', 'they', 'dont', 'yeah', 'want', 'love', 'guys', 'some', 'been', 'talk', 'nice', 'time', 'when', 'haha', 'make', 'girl', 'need', 'U122', 'MODE', 'much', 'then', 'will', 'over', 'were', 'work', 'take', 'U115', 'U121', 'song', 'U105']
+
+23.
+Dropboxの方に書いてる
+
+24.
+Dropboxの方に書いてる
+
+25.
+>>> listed = ['she', 'sells', 'sea', 'shells', 'by', 'the', 'sea', 'shore']
+>>> [word for word in listed if word.startswith('sh')]
+['she', 'shells', 'shore']
+>>> [word for word in listed if len(word) >= 4]
+['sells', 'shells', 'shore']
+
+26.
+text1の其々の要素の文字数をリストとして返し、リストの要素である文字数の総和を出力する
+
+27.
+>>> def vocab_size(t):
+...     return len(set(t))
+... 
+>>> vocab_size(text1)
+19317
+
+28.
+>>> def percent(word, text):
+...     return 100 * text.count('word') / float(len(text))
+... 
+>>> percent("the", text1)
+0.02913898143923564
+>>> 100 * text1.count('word')
+7600
+>>> float(len(text1))
+260819.0
+
+29.
+>>> set(sent3) < set(text1)
+True
+テキスト間の語彙数の比較
+
+
+
+
+
+
+P9
+>>> len(text3) / len(set(text3))
+16
+>>> from __future__ import division　#これで小数点をだせるようにしている
+>>> len(text3) / len(set(text3))
+16.050197203298673
+
+P9 やってみよう
+>>> text5.count("lol")
+704
+>>> 100 * text5.count("lol") / len(text5)
+1.5640968673628082
+>>> def percentage(count, total):
+...     return 100 * count / total
+...  
+>>> percentage(text5.count("lol") , len(text5))
+1.5640968673628082
+
+P13
+リストの使い方
+>>> text4[0]
+'Fellow'
+>>> text4[-1]
+'.'
+>>> text4[-2]
+'America'
+>>> text4[145734]
+'.'
+>>> text4[145733]
+'America'
+>>> text4[0:1]
+['Fellow']
+>>> text4[1:10]
+['-', 'Citizens', 'of', 'the', 'Senate', 'and', 'of', 'the', 'House']
+>>> text4[:3]
+['Fellow', '-', 'Citizens']
+
+P18
+>>> saying = ['After', 'all', 'is', 'said', 'and', 'done',
+...  'more', 'is', 'said', 'than', 'done']
+>>> tokens = sorted(set(saying))
+>>> tokens
+['After', 'all', 'and', 'done', 'is', 'more', 'said', 'than']
+>>> tokens[-2:]
+['said', 'than']
+
+P19
+>>> fdist1 = FreqDist(text1)
+>>> fdist1
+<FreqDist with 260819 outcomes>
+>>> len(text1)
+260819
+>>> vocabulary1 = fdist1.keys()
+>>> vocabulary1[:50]
+[',', 'the', '.', 'of', 'and', 'a', 'to', ';', 'in', 'that', "'", '-', 'his', 'it', 'I', 's', 'is', 'he', 'with', 'was', 'as', '"', 'all', 'for', 'this', '!', 'at', 'by', 'but', 'not', '--', 'him', 'from', 'be', 'on', 'so', 'whale', 'one', 'you', 'had', 'have', 'there', 'But', 'or', 'were', 'now', 'which', '?', 'me', 'like']
+>>> fdist1[',']
+18713
+>>> fdist1['the']
+13721
+>>> fdist1['a']
+4569
+>>> fdist1['to']
+4542
+>>> fdist1['I']
+2124
+>>> fdist1['whale']
+906
+>>> fdist1['you']
+841
+>>> fdist1['or']
+697
+>>> fdist1['?']
+637
+
+P21
+>>> V = set(text1)
+>>> long_words = [w for w in V if len(w) > 15]
+>>> sorted(long_words)
+['CIRCUMNAVIGATION', 'Physiognomically', 'apprehensiveness', 'cannibalistically', 'characteristically', 'circumnavigating', 'circumnavigation', 'circumnavigations', 'comprehensiveness', 'hermaphroditical', 'indiscriminately', 'indispensableness', 'irresistibleness', 'physiognomically', 'preternaturalness', 'responsibilities', 'simultaneousness', 'subterraneousness', 'supernaturalness', 'superstitiousness', 'uncomfortableness', 'uncompromisedness', 'undiscriminating', 'uninterpenetratingly']
+
+>>> V = set(text1)
+>>> long_words = []
+>>> for w in V:
+...     if len(w) > 15:
+...             long_words.append(w)
+>>> sorted(A)
+['CIRCUMNAVIGATION', 'Physiognomically', 'apprehensiveness', 'cannibalistically', 'characteristically', 'circumnavigating', 'circumnavigation', 'circumnavigations', 'comprehensiveness', 'hermaphroditical', 'indiscriminately', 'indispensableness', 'irresistibleness', 'physiognomically', 'preternaturalness', 'responsibilities', 'simultaneousness', 'subterraneousness', 'supernaturalness', 'superstitiousness', 'uncomfortableness', 'uncompromisedness', 'undiscriminating', 'uninterpenetratingly']
+
+P29
+>>> for w in sent3:
+...     print w
+... 
+In
+the
+beginning
+God
+created
+the
+heaven
+and
+the
+earth
+.
+
+>>> for w in sent3:
+...     print w,
+... 
+In the beginning God created the heaven and the earth .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

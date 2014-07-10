@@ -1,0 +1,240 @@
+3章
+1.
+>>> s = "colorless"
+>>> s[:4] + "u" + s[4:]
+'colourless'
+
+2.
+>>> 'dishes'[:-2]
+'dish'
+>>> 'running'[:-4]
+'run'
+>>> 'nationality'[:-5]
+'nation'
+>>> 'undo'[:-2]
+'un'
+>>> 'preheat'[:-4]
+'pre'
+
+3.
+>>> 'preheat'[-100]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+
+4.
+>>> monty = 'Monty Python'
+>>> monty[6:11:2]
+'Pto'
+>>> monty[10:5:-2]
+'otP'
+>>> monty[10:3:-3]
+'oyy'
+
+5.
+>>> monty[::-1]
+'nohtyP ytnoM'
+スライシングにおいて開始文字と終了文字が指定されずステップのみが指定されているので、全ての文字に対して逆の順で並ぶようになっている。
+要素が6番目のものまで表示するのは以下のもの
+>>> monty[:5:-1]
+'nohtyP'
+
+6.
+\dは[0-9] と同じ意味
+\wと[a-zA-Z_0-9]が同じ意味
+\sは空白文字、つまり大抵の制御文字クラス \f、\n、\r、\t や \v
+
+a.アルファベット(大文字小文字は問わない)が1文字以上続くもの
+b.始めの文字がアルファベットの大文字で二文字目以降が小文字のアルファベットが続くもの(一文字だけでもよい)
+c.1文字目がpでaeiouのいずれかの文字が2回以下繰り返し末尾にtがつく文字
+d.数字を1回以上繰り返す文字列。またその後に.と数字が1回以上繰り返すパターンがつく文字列
+e.一文字目と三文字目ががaeiou以外で二文字目がaeiouというパターンを0回以上繰り返したもの
+f.アルファベット、数字、アンダーバーが一文字以上続く文字列。またアルファベット、数字、アンダーバー、空白文字以外の文字が一文字以上繰り返す文字列
+
+7.
+a.a|an|the
+b.(-?\d+(\.\d+)?[+-*/])+-?\d+(\.\d+)?		(\d+(\.\d+)?が数字の部分。整数なので-の時の事も考える。また小数点以下と減算と除算も考慮した)
+
+8.
+>>> from urllib import urlopen
+>>> url = 'http://www.nltk.org/'
+>>> html = urlopen(url).read()
+>>> raw = nltk.clean_html(html)
+>>> raw
+
+9.
+>>> def load(f):
+...     return open(f).read()
+>>> load('corpus.txt')
+
+a.
+>>> text = """'"Nonsense!',
+...  '" said Gregory, who was very rational when anyone else\nattempted paradox.',
+...  '"Why do all the clerks and navvies in the\nrailway trains look so sad and tired,...',
+...  'I will\ntell you.',
+...  'It is because they know that the train is going right.',
+...  'It\nis because they know that whatever place they have taken a ticket\nfor that ...',
+...  'It is because after they have\npassed Sloane Square they know that the next stat...',
+...  'Oh, their wild rapture!',
+...  'oh,\ntheir eyes like stars and their souls again in Eden, if the next\nstation w...'
+...  '"\n\n"It is you who are unpoetical," replied the poet Syme.'"""
+>>> pattern = r'''(?x)    # set flag to allow verbose regexps
+... \.\.\.            # ellipsis
+... | [.,;"'?():\-_`]  # these are separate tokens'''
+>>> nltk.regexp_tokenize(text, pattern)
+
+b.
+>>> text = """$1,234.00 $99
+... 2011-12-03
+... Mr.Komachi, Mrs.Hirata"""
+
+>>> money_pattern = r'\$[\d,]+(\.\d+)?'
+>>> nltk.regexp_tokenize(text, money_pattern)
+
+>>> date_pattern = r'\d{4,4}-\d{2,2}-\d{2,2}'
+>>> nltk.regexp_tokenize(text, date_pattern)
+
+>>> name_pattern = r'Mrs?\.[A-Z][A-Za-z]*'
+>>> nltk.regexp_tokenize(text, name_pattern)
+
+10.
+>>> [(word, len(word)) for word in sent]
+
+11.
+>>> raw = "Define a string raw containing a sentence of your own choosing. Now, split raw on some character other than space, such as 's'"
+>>> raw.split('s')
+
+12.
+>>> for w in 'abcdefg hijkl':
+...     print w
+
+13.
+引数なしのsplitは両端の空白を取り除き、\s+で分割する。
+>>> " a b\tc\nd  e\t\tf \tg ".split()
+['a', 'b', 'c', 'd', 'e', 'f', 'g']
+>>> " a b\tc\nd  e\t\tf \tg ".split('   ')
+[' a b', 'c\nd  e', '', 'f ', 'g ']
+
+14.
+words.sort()はwordsのリストそのものをソートする。
+sorted(words)は、wordsとは別にソートされた内容のリストを新たに生成して返す。
+>>> words = ['x','b','c','d','e']
+>>> sorted(words)
+['b', 'c', 'd', 'e', 'x']
+>>> words
+['x', 'b', 'c', 'd', 'e']
+>>> words.sort()
+>>> words
+['b', 'c', 'd', 'e', 'x']
+
+15.
+>>> "3" * 7
+'3333333'
+>>> 3 * 7
+21
+>>> int("3")
+3
+>>> str(3)
+'3'
+
+16.
+from test import montyを実行すると、
+testモジュールからmontyという名前が現在の名前空間にインポートされ、
+montyという名前が使えるようになる。
+
+import testを実行すると
+testというモジュールの名前が現在の名前空間にインポートされ、
+testモジュールの中の名前は
+test.montyのように使えるようになる。
+
+>>> monty
+Traceback (most recent call last):
+File "", line 1, in 
+NameError: name 'monty' is not defined
+>>> from test import monty
+>>> monty
+'Monty Python'
+>>> import test
+>>> test.monty
+'Monty Python'
+
+17.
+6文字より長ければ、6文字を超えて全部プリントされるので、-があってもなくても同じ結果になる。
+>>> '%6s' % '1234567890'
+'1234567890'
+>>> '%-6s' % '1234567890'
+'1234567890'
+
+18.
+>>> from __future__ import division
+>>> import nltk, re, pprint
+>>> from urllib import urlopen
+>>> url = "http://www.gutenberg.org/files/2554/2554.txt"
+>>> raw = urlopen(url).read()
+>>> type(raw)
+<type 'str'>
+>>> tokens = nltk.word_tokenize(raw)
+>>> type(tokens)
+<type 'list'>
+>>> sorted(set([w for w in tokens if w.startswith('wh')]))
+['whales', 'what', 'what.', 'what...', 'whatever', 'whatever.', 'whatsoever', 'whatsoever.', 'wheel', 'wheeled', 'wheels', 'wheels.', 'when', 'when...', 'whenever', 'where', 'where.', 'where...', 'whereabouts', 'wherever', 'whether', 'which', 'which...', 'while', 'while.', 'while....', 'whilst', 'whimper', 'whimpering', 'whims', 'whined', 'whip', 'whipped', 'whips', 'whirl.', 'whirling', 'whisked', 'whiskered', 'whiskers', 'whiskers.', 'whiskers....', 'whisper', 'whisper.', 'whispered', 'whispering', 'whispers', 'whistled.', 'whistling.', 'white', 'white...', 'whitish', 'who', 'who...', 'whoever', 'whole', 'whole.', 'wholly', 'whom', 'whom...', 'whose', 'whose...', 'whosoever', 'why', 'why.', 'why...']
+whで始まるもののみで考えているので大文字がリストにあることは無いが、ピリオドはnltk.word_tokenizeでは単体でトークン化されないので単語が重複する。
+
+19.
+単独で書いた
+
+20.
+>>> from urllib import urlopen
+>>> url = "http://weather.yahoo.co.jp/weather/"
+>>> html = urlopen(url).read()
+>>> raw = nltk.clean_html(html)
+>>> print raw
+
+21.
+単独で書いた
+
+22.
+21で使ったプログラムで解いたが題意がよくわからなかった(普通にテキストがとれたと思う)のでスルー
+
+23.
+>>> raw = """'When I'M a Duchess,' she said to herself, (not in a very hopeful tone though), 'I don't have any pepper in my kitchen AT ALL. Soup does very well without--Maybe it's always pepper that makes people hot-tempered,'..."""
+>>> re.findall(r"n't|\w+[^(n't)]", raw)
+n't|\w+だとdon'tが入力に来た時、donの部分が\w+に該当してしまうためdonとtが出力されてしまう。
+
+24.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3.5.1 やってみよう
+>>> [int(n) for n in re.findall("[0-9]+", '2009-12-31')]
+[2009, 12, 31]
+
+
+
+
+
+
+
+
+
+

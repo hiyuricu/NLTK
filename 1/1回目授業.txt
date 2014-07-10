@@ -1,0 +1,4 @@
+授業内容
+bashについて(cd,ls,pwd,tab,コマンド履歴,ctrl+a,ctrl+e,ctrl+z)
+小技(ctrl+command+d)
+1.1.1と1.1.2

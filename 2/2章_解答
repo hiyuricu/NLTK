@@ -1,0 +1,177 @@
+2章
+1.
+>>> a = ["word","term","unique","apple"]
+>>> a + ["orange"]
+['word', 'term', 'unique', 'apple', 'orange']
+>>> a * 2
+['word', 'term', 'unique', 'apple', 'word', 'term', 'unique', 'apple']
+>>> a[-1]
+'apple'
+>>> a[1:]
+['term', 'unique', 'apple']
+>>> sorted(a)
+['apple', 'term', 'unique', 'word']
+
+2.
+>>> persuasion = nltk.corpus.gutenberg.words('austen-persuasion.txt')
+>>> len(persuasion)
+98171
+>>> len(set(persuasion))
+6132
+
+3.
+>>> nltk.corpus.brown.categories()
+['adventure', 'belles_lettres', 'editorial', 'fiction', 'government', 'hobbies', 'humor', 'learned', 'lore', 'mystery', 'news', 'religion', 'reviews', 'romance', 'science_fiction']
+>>> nltk.corpus.brown.words(categories="romance")
+['They', 'neither', 'liked', 'nor', 'disliked', 'the', ...]
+>>> nltk.corpus.webtext.words()
+['Cookie', 'Manager', ':', '"', 'Don', "'", 't', ...]
+
+4.　2.1.5の就任演説コーパスのコードを参照する
+>>> from nltk.corpus import state_union
+>>> state_union.fileids()
+['1945-Truman.txt', '1946-Truman.txt', '1947-Truman.txt', '1948-Truman.txt', '1949-Truman.txt', '1950-Truman.txt', '1951-Truman.txt', '1953-Eisenhower.txt', '1954-Eisenhower.txt', '1955-Eisenhower.txt', '1956-Eisenhower.txt', '1957-Eisenhower.txt', '1958-Eisenhower.txt', '1959-Eisenhower.txt', '1960-Eisenhower.txt', '1961-Kennedy.txt', '1962-Kennedy.txt', '1963-Johnson.txt', '1963-Kennedy.txt', '1964-Johnson.txt', '1965-Johnson-1.txt', '1965-Johnson-2.txt', '1966-Johnson.txt', '1967-Johnson.txt', '1968-Johnson.txt', '1969-Johnson.txt', '1970-Nixon.txt', '1971-Nixon.txt', '1972-Nixon.txt', '1973-Nixon.txt', '1974-Nixon.txt', '1975-Ford.txt', '1976-Ford.txt', '1977-Ford.txt', '1978-Carter.txt', '1979-Carter.txt', '1980-Carter.txt', '1981-Reagan.txt', '1982-Reagan.txt', '1983-Reagan.txt', '1984-Reagan.txt', '1985-Reagan.txt', '1986-Reagan.txt', '1987-Reagan.txt', '1988-Reagan.txt', '1989-Bush.txt', '1990-Bush.txt', '1991-Bush-1.txt', '1991-Bush-2.txt', '1992-Bush.txt', '1993-Clinton.txt', '1994-Clinton.txt', '1995-Clinton.txt', '1996-Clinton.txt', '1997-Clinton.txt', '1998-Clinton.txt', '1999-Clinton.txt', '2000-Clinton.txt', '2001-GWBush-1.txt', '2001-GWBush-2.txt', '2002-GWBush.txt', '2003-GWBush.txt', '2004-GWBush.txt', '2005-GWBush.txt', '2006-GWBush.txt']
+>>> cfd = nltk.ConditionalFreqDist((target, fileid[:4]) for fileid in state_union.fileids() for w in state_union.words(fileid) for target in ['men', 'women', 'people'] if w.lower().startswith(target))
+>>> cfd.plot()
+
+5.
+>>> wn.synset('tree.n.01').part_meronyms()
+[Synset('burl.n.02'), Synset('crown.n.07'), Synset('stump.n.01'),Synset('trunk.n.01'), Synset('limb.n.02')]
+>>> wn.synset('crown.n.07').part_holonyms()
+[Synset('tree.n.01')]
+>>> wn.synset('tree.n.01').substance_meronyms()
+[Synset('heartwood.n.01'), Synset('sapwood.n.01')]
+>>> wn.synset('heartwood.n.01').substance_holonyms()
+[Synset('tree.n.01')]
+>>> wn.synset('tree.n.01').member_holonyms()
+[Synset('forest.n.01')]
+>>> wn.synset('forest.n.01').member_meronyms()
+[Synset('underbrush.n.01'), Synset('tree.n.01')]
+
+6.
+1対1対応する辞書を作る事で語義曖昧性が発生してしまう。wordnetを用いれば解消可能。
+
+7.
+>>> emma = nltk.Text(nltk.corpus.gutenberg.words('austen-emma.txt'))
+>>> emma.concordance("however")
+Building index...
+Displaying 25 of 131 matches:
+ her many enjoyments . The danger , however , was at present so unperceived , t
+ion would offend . Miss Churchill , however , being of age , and with the full 
+n . From the expense of the child , however , he was soon relieved . The boy ha
+ -- and been very well brought up . However , I do not mean to set up my opinio
+f and predict . It was not likely , however , that any body should have equalle
+to be borne . We will not despair , however . Weston may grow cross from the wa
+is so very handsome and agreeable . However , I do really think Mr . Martin a v
+ accepted after all . This letter , however , was written , and sealed , and se
+e him ." " And if I did , ( which , however , I am far from allowing ) I should
+ slightingly . Waiving that point , however , and supposing her to be , as you 
+e was not so materially cast down , however , but that a little time and the re
+ld inspire him ." The very next day however produced some proof of inspiration 
+and staid to look through herself ; however , she called me back presently , an
+t turn up . His ostensible reason , however , was to ask whether Mr . Woodhouse
+l and cross . This does not apply , however , to Miss Bates ; she is only too g
+and sufferings of the poor family , however , were the first subject on meeting
+ting for her . She gained on them , however , involuntarily : the child ' s pac
+ould close it . It was not closed , however , it still remained ajar ; but by e
+ believes himself secure ." Still , however , though every thing had not been a
+ght advance rapidly if they would , however ; they must advance somehow or othe
+ offence came not . The beginning , however , of every visit displayed none but
+eed !-- and my memory is very bad . However , it was an exceeding good , pretty
+first day . Emma ' s sense of right however had decided it ; and besides the co
+le fatigued . I could have wished , however , as you know , that you had seen M
+" Our little friend Harriet Smith , however , is just such another pretty kind 
+
+8.
+>>> from nltk.corpus import names
+>>> cfd = nltk.ConditionalFreqDist((fileid, name[0]) for fileid in names.fileids() for name in names.words(fileid))
+>>> cfd.plot()
+
+9.
+>>> from nltk.corpus import brown
+>>> for fileid in brown.fileids():
+...     num_words = len(brown.words(fileid))
+...     num_vocab = len(set([w.lower() for w in brown.words(fileid)]))
+...     print num_vocab, float(num_words)/num_vocab, brown.categories(fileid) , fileid
+
+語彙曖昧性を探す方はsimilarを使って探せばいいと思う。（時間あればコード書く）
+
+10.
+Dropboxに書いた
+普通の小説でも異なり語数トップ20が全てのトークンの三分の一を占めているのでティーンエイジャーの語彙力が低下しているという事を示す事にはならないと思われる。
+
+11.
+>>> cfd = nltk.ConditionalFreqDist((genre, word) for genre in brown.categories() for word in brown.words(categories=genre))
+>>> genres = ['adventure', 'belles_lettres', 'editorial', 'fiction', 'government', 'hobbies','humor', 'learned', 'lore', 'mystery', 'news', 'religion', 'reviews', 'romance','science_fiction']
+>>> modals = ['can', 'could', 'may', 'might', 'must', 'will', 'would', 'shall', 'should', 'need', 'dare']
+>>> cfd.tabulate(conditions=genres, samples=modals)
+
+動詞でやってみたけどうまくいかなかった
+>>> modals = ['love', 'play', 'study', 'smile', 'fight', 'propose', 'suppose', 'frighten']
+>>> cfd.tabulate(conditions=genres, samples=modals)
+
+12.
+Dropboxに書いた
+
+13.
+Dropboxに書いた
+
+14.
+Dropboxに書いた
+
+15.
+Dropboxに書いた
+
+16.
+Dropboxに書いた
+
+17.
+Dropboxに書いた
+
+18.
+Dropboxに書いた
+
+19.内容的には11と同じ。modalsを何にするかによる。
+>>> cfd = nltk.ConditionalFreqDist((genre, word) for genre in brown.categories() for word in brown.words(categories=genre))
+>>> genres = ['adventure', 'belles_lettres', 'editorial', 'fiction', 'government', 'hobbies','humor', 'learned', 'lore', 'mystery', 'news', 'religion', 'reviews', 'romance','science_fiction']
+>>> modals = ['can', 'could', 'may', 'might', 'must', 'will', 'would', 'shall', 'should', 'need', 'dare']
+>>> cfd.tabulate(conditions=genres, samples=modals)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+P57
+cumulativeは表示する値を累積表示するかどうかを示す。cumulative=Trueだと累積表示、cumulative=Falseだとその数値のみに対する値の表示になる。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
